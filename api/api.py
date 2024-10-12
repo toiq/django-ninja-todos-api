@@ -45,7 +45,7 @@ def get_csrf_token(request):
     return {"csrftoken": get_token(request)}
 
 
-@api.post("/login", tags=["Authentication"])
+@api.post("/login", auth=None, tags=["Authentication"])
 def login_view(request, payload: SignInSchema):
     """Login a user"""
     user = authenticate(request, username=payload.username, password=payload.password)
